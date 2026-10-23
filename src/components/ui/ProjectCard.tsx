@@ -10,7 +10,7 @@ const ext =
 export function ProjectCard({ project }: { project: Project }) {
   const { live, repo } = project.links;
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-accent/60">
+    <article className="group relative h-full flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-[border-color,transform] motion-safe:hover:-translate-y-1 hover:border-accent/60">
       <div className="relative aspect-[1200/630] w-full bg-background">
         <Image
           src={project.cover}

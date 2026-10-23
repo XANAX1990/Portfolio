@@ -61,9 +61,7 @@ export const projects: Project[] = [
     featured: true,
     stack: ["n8n", "LINE Messaging API", "Google Drive API", "ngrok", "HMAC-SHA256"],
     cover: "/projects/n8n-automations/cover.png",
-    links: {
-      // TODO: repo URL (if any)
-    },
+    links: {},
     problem: "TODO: why these automations exist (your own words)",
     solution:
       "Self-hosted n8n exposed through an ngrok static domain, running two workflows: a LINE bot that saves files to Google Drive, and a webhook receiver that turns Mini Jira events into LINE alerts.",
@@ -81,17 +79,18 @@ export const projects: Project[] = [
   {
     slug: "pomodoro",
     title: "Pomodoro",
-    tagline: "TODO: one-line description",
+    tagline: "A webapp that can run offline and push notification and pomodoro timer with ADHD Supports",
     featured: true,
-    stack: ["Firebase Hosting", "Service Worker", "TODO: confirm rest of stack"],
+    stack: ["Firebase Hosting", "Service Worker", "HTML", "CSS", "JavaScript"],
     cover: "/projects/pomodoro/cover.png",
     links: {
-      // TODO: live URL and repo URL
+      live: "https://pomodoro-webapp-870c6.web.app",
+      repo: "https://github.com/XANAX1990/pomodoro",
     },
     problem: "TODO",
     solution:
-      "TODO: capstone project. Known: deployed on Firebase Hosting; the service-worker cache version is bumped automatically on deploy by a predeploy script.",
-    highlights: ["TODO"],
-    lessons: ["TODO"],
+      "All in one webapp timer for ADHD Supports",
+    highlights: ["A webapp that can run offline and push notification and pomodoro timer with ADHD Supports."],
+    lessons: ["just too low for features for graduate project"],
   },
 ];

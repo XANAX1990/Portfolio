@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import { Section } from "@/components/ui/Section";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { Tag } from "@/components/ui/Tag";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Projects() {
   const featured = projects.filter((p) => p.featured);
@@ -10,8 +11,10 @@ export function Projects() {
   return (
     <Section id="projects" heading="Projects">
       <div className="grid gap-6 md:grid-cols-2">
-        {featured.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+        {featured.map((p, i) => (
+          <Reveal key={p.slug} delay={i * 0.1} className="h-full">
+            <ProjectCard project={p} />
+          </Reveal>
         ))}
       </div>
       {other.length > 0 && (

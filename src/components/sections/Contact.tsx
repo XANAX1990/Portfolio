@@ -15,19 +15,17 @@ export function Contact() {
             {profile.email}
           </a>
         </li>
+        <li>
+          Email:{" "}
+          <a href={`mailto:${profile.email2}`} className={link}>
+            {profile.email2}
+          </a>
+        </li>
         {isUrl(profile.github) && (
           <li>
             GitHub:{" "}
             <a href={profile.github} className={link} target="_blank" rel="noopener noreferrer">
               {profile.github.replace(/^https?:\/\//, "")}
-            </a>
-          </li>
-        )}
-        {isUrl(profile.linkedin) && (
-          <li>
-            LinkedIn:{" "}
-            <a href={profile.linkedin} className={link} target="_blank" rel="noopener noreferrer">
-              {profile.linkedin.replace(/^https?:\/\//, "")}
             </a>
           </li>
         )}

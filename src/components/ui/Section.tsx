@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 export function Section({
   id,
   heading,
@@ -19,7 +21,7 @@ export function Section({
       >
         {heading}
       </h2>
-      {children}
+      <Reveal>{children}</Reveal>
     </section>
   );
 }
