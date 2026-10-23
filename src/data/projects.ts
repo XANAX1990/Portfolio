@@ -91,7 +91,7 @@ export const projects: Project[] = [
     cover: "/projects/pomodoro/cover.png",
     links: {
       live: "https://pomodoro-webapp-870c6.web.app",
-      repo: "https://github.com/XANAX1990/pomodoro",
+      repo: "https://github.com/XANAX1990/Pomodoro-Webapp",
     },
     problem: "Just make before graduated and i interest with ADHD Brain and i make all design in webapp",
     solution:
