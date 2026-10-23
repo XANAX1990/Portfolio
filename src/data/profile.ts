@@ -6,6 +6,7 @@ export const profile = {
   email: "inkfon23@gmail.com",
   github: "TODO: https://github.com/<username>",
   linkedin: "TODO: https://linkedin.com/in/<username>",
+  about: ["TODO: 3-4 short lines about you"],
   resume: "/resume.pdf",
   skills: {
     Frontend: ["TODO: confirm list"],
