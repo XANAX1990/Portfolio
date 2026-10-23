@@ -19,7 +19,7 @@ export function Hero() {
             GitHub
           </Button>
         )}
-        <Button href="#contact">Contact</Button>
+        <Button href="/#contact">Contact</Button>
       </div>
     </section>
   );

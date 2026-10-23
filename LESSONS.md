@@ -163,3 +163,9 @@
 - **Also changed:** the trigger rules after the owner's run: alert on every create and on any priority change (`issue.priority_changed` with `previousPriority`), and a Thai ready-to-show `label` in the payload, so n8n does not translate `event`. (An interim HIGH-only rule was committed first and then replaced.)
 - **Rule:** after editing an n8n workflow, publish it and re-test the production URL; a LINE push needs the `to` ID and the token from the same channel.
 - **Vercel env vars need a Redeploy.** Adding or changing a variable (`N8N_WEBHOOK_URL`, `N8N_WEBHOOK_SECRET`, `APP_URL`) changes nothing for the running deployment; only a new deployment reads it. The symptom is "works locally, no alert on prod". Rule: after editing a Vercel variable, Redeploy, then test on the production domain.
+
+## 2026-10-24 · Portfolio Phase 3: `/projects/nope` answered 200 with Cache Components
+- **Symptom:** `notFound()` in `src/app/projects/[slug]/page.tsx` rendered the not-found UI (with `noindex`) but the HTTP status was 200. `export const dynamicParams = false` is not an option: with `cacheComponents` it fails the build.
+- **Root cause:** unknown slugs are rendered on request as a partial prerender; the shell is already streaming when `notFound()` runs, so the status is sent first (same cause as the Mini Jira "Non-member 404 has status 200" entry).
+- **Fix:** `src/proxy.ts` (matcher `/projects/:slug`) checks the slug against `projects.ts` and rewrites unknown ones to `/_not-found` with `status: 404`. The `notFound()` in the page stays as a backup. Checked on `next build && next start`: known slugs 200, `/projects/nope` 404, `/nothing` 404.
+- **Rule:** with Cache Components, reject unknown dynamic params in `proxy.ts` if you need a real 404 status; read `node_modules/next/dist/docs` for `dynamicParams` before using it. Nav anchors used on more than one page must be `/#id`, not `#id`.

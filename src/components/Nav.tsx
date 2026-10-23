@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const focus =
@@ -28,9 +29,9 @@ export function Nav({ name }: { name: string }) {
         aria-label="Main"
         className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6"
       >
-        <a href="#top" className={`font-semibold ${focus}`}>
+        <Link href="/#top" className={`font-semibold ${focus}`}>
           {name}
-        </a>
+        </Link>
         <ul className="hidden gap-6 text-sm sm:flex">
           {links.map((l) => (
             <li key={l.href}>
