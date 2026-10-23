@@ -95,8 +95,19 @@ export const projects: Project[] = [
     },
     problem: "Just make before graduated and i interest with ADHD Brain and i make all design in webapp",
     solution:
-      "All in one webapp timer for ADHD Supports",
-    highlights: ["A webapp that can run offline and push notification and pomodoro timer with ADHD Supports."],
-    lessons: ["just too low for features for graduate project"],
+      "A Pomodoro timer web app with two modes: a General timer and an ADHD mode with a shorter Beginner preset, an hourglass visual and prompts for movement, rewards and milestones. It is an installable PWA hosted on Firebase.",
+    highlights: [
+      "Works offline: a service worker precaches the app shell (29 files); reloading with the network off still shows the timer and it keeps counting",
+      "Four focus levels (Beginner 10/5/10, Standard 25/5/15, Medium 40/8/20, Expert 60/10/25 minutes) plus a custom preset, with alarm and auto-start settings",
+      "Task list with done/clear actions that survives a page reload; dark mode choice is also remembered",
+      "Remaining time shows in the browser tab title, and a Lofi background music player sits in the bottom bar",
+      "Installable (web app manifest with a shortcut straight to ADHD mode) and usable at 375px with no horizontal scroll",
+    ],
+    lessons: [
+      "just too low for features for graduate project",
+      "Trying the live app in an automated Chrome run: Firebase App Check answered 403 on every page load, but the timer, tasks and offline mode were not affected",
+      "The first press of Start opens a native confirm() asking about notifications, which blocks the page; a custom dialog would be gentler",
+      "After Pause the button that brings the timer back is still labelled Start instead of Resume",
+    ],
   },
 ];
