@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "Vitest",
       "Vercel",
     ],
-    cover: "/projects/mini-jira/cover.png",
+    cover: "/projects/mini-jira/board.png",
     links: {
       live: "https://mini-jira-tan.vercel.app",
       repo: "https://github.com/XANAX1990/Mini-jira",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     tagline: "LINE to Google Drive file bot and Mini Jira alert pipeline on self-hosted n8n",
     featured: true,
     stack: ["n8n", "LINE Messaging API", "Google Drive API", "ngrok", "HMAC-SHA256"],
-    cover: "/projects/n8n-automations/cover.png",
+    cover: "/projects/n8n-automations/workflow.png",
     links: {},
     problem: "im just LAZY to do boring works and YEE i get predeploy on pomodoro and mini jira and n8n . so i decide to make a line bot for me to do the boring works , and its works ",
     solution:
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     tagline: "A webapp that can run offline and push notification and pomodoro timer with ADHD Supports",
     featured: true,
     stack: ["Firebase Hosting", "Service Worker", "HTML", "CSS", "JavaScript"],
-    cover: "/projects/pomodoro/cover.png",
+    cover: "/projects/pomodoro/timer.png",
     links: {
       live: "https://pomodoro-webapp-870c6.web.app",
       repo: "https://github.com/XANAX1990/Pomodoro-Webapp",
