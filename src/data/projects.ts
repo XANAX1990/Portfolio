@@ -37,7 +37,7 @@ export const projects: Project[] = [
       live: "https://mini-jira-tan.vercel.app",
       // TODO: repo URL
     },
-    problem: "TODO: why Mini Jira exists (your own words)",
+    problem: "Im too Lazy to be in office while at works so i build this because HR and people in office can ticket and i can work from home . ",
     solution:
       "A Jira-style project and issue tracker built on the Next.js 16 App Router with Server Actions and Cache Components. Users sign in with GitHub or Google (Auth.js v5, JWT sessions), create projects, and move issues across a Kanban board.",
     highlights: [
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     stack: ["n8n", "LINE Messaging API", "Google Drive API", "ngrok", "HMAC-SHA256"],
     cover: "/projects/n8n-automations/cover.png",
     links: {},
-    problem: "TODO: why these automations exist (your own words)",
+    problem: "im just LAZY to do boring works and YEE i get predeploy on pomodoro and mini jira and n8n . so i decide to make a line bot for me to do the boring works , and its works ",
     solution:
       "Self-hosted n8n exposed through an ngrok static domain, running two workflows: a LINE bot that saves files to Google Drive, and a webhook receiver that turns Mini Jira events into LINE alerts.",
     highlights: [
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       live: "https://pomodoro-webapp-870c6.web.app",
       repo: "https://github.com/XANAX1990/pomodoro",
     },
-    problem: "TODO",
+    problem: "Just make before graduated and i interest with ADHD Brain and i make all design in webapp",
     solution:
       "All in one webapp timer for ADHD Supports",
     highlights: ["A webapp that can run offline and push notification and pomodoro timer with ADHD Supports."],

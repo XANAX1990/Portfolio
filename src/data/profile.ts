@@ -7,7 +7,7 @@ export const profile = {
   email2: "juthawat.jj@gmail.com",
   github: "https://github.com/XANAX1990",
   about: ["Hi Im Juthawat", "I'm just Developer and all i build is for myself."],
-  siteRepo: "TODO: https://github.com/<username>/portfolio",
+  siteRepo: "https://github.com/XANAX1990/Portfolio",
   resume: "/resume.pdf",
   skills: {
     Frontend: ["HTML", "CSS", "JavaScript", "React", "Next.js", "TailwindCSS", "Shadcn UI", "Framer Motion", "GSAP"],
