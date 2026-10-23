@@ -16,7 +16,7 @@ export function Contact() {
           </a>
         </li>
         <li>
-          Email2:{" "}
+          Email 2:{" "}
           <a href={`mailto:${profile.email2}`} className={link}>
             {profile.email2}
           </a>

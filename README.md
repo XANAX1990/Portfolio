@@ -2,8 +2,10 @@
 
 My personal developer portfolio: a fast, static site that shows the projects I've built, what each one solved, and what I learned building it.
 
-> **Status:** in development. See [`PLAN.md`](./PLAN.md) for the roadmap and current progress.
-> **Live:** _add the Vercel link after Phase 6_
+> **Live:** https://portfolio-xanax.vercel.app
+> **Status:** deployed on Vercel. See [`PLAN.md`](./PLAN.md) for the roadmap.
+
+![Portfolio home page](./docs/screenshot.png)
 
 ---
 
