@@ -35,7 +35,7 @@ export const projects: Project[] = [
     cover: "/projects/mini-jira/cover.png",
     links: {
       live: "https://mini-jira-tan.vercel.app",
-      // TODO: repo URL
+      repo: "https://github.com/XANAX1990/Mini-jira",
     },
     problem: "Im too Lazy to be in office while at works so i build this because HR and people in office can ticket and i can work from home . ",
     solution:
@@ -74,6 +74,12 @@ export const projects: Project[] = [
       "A Windows console in QuickEdit mode can freeze the n8n process",
       "LINE user IDs are per provider, and each OA needs its own channel token",
       "Publish the Google OAuth app to avoid 7-day token expiry",
+    ],
+    gallery: [
+      {
+        src: "/projects/n8n-automations/line-reply.png",
+        alt: "LINE chat showing the bot's confirmation reply after a file was saved to Google Drive",
+      },
     ],
   },
   {
