@@ -169,3 +169,9 @@
 - **Root cause:** unknown slugs are rendered on request as a partial prerender; the shell is already streaming when `notFound()` runs, so the status is sent first (same cause as the Mini Jira "Non-member 404 has status 200" entry).
 - **Fix:** `src/proxy.ts` (matcher `/projects/:slug`) checks the slug against `projects.ts` and rewrites unknown ones to `/_not-found` with `status: 404`. The `notFound()` in the page stays as a backup. Checked on `next build && next start`: known slugs 200, `/projects/nope` 404, `/nothing` 404.
 - **Rule:** with Cache Components, reject unknown dynamic params in `proxy.ts` if you need a real 404 status; read `node_modules/next/dist/docs` for `dynamicParams` before using it. Nav anchors used on more than one page must be `/#id`, not `#id`.
+
+## 2026-10-24 · Portfolio: replaced a cover image, the dev server kept showing the old one (blank cards)
+- **Symptom:** after overwriting `public/projects/<slug>/cover.png` with real screenshots, the cards in `npm run dev` showed an empty box (the old solid-colour placeholder). The `<img>` was `complete`, `opacity: 1`, nothing covered it, and the raw file `/projects/<slug>/cover.png` was correct.
+- **Root cause:** `next/image` serves `/_next/image?url=...` and Chrome asks for WebP. The running dev server kept returning the WebP it had optimised from the *old* file (mean colour of all three = the placeholder colour, 458 bytes). `curl` without an `Accept` header got a PNG built from the new file, which hid the problem. A fresh `build && start` served the right WebP for all three.
+- **Fix:** stop `npm run dev` and start it again (deleting `.next/cache/images` while it runs is not enough). Nothing to change in code; Vercel builds from scratch.
+- **Rule:** when a replaced image looks unchanged or blank, restart the dev server before touching code. Test `/_next/image` with `-H "Accept: image/webp,*/*"` like a browser, and compare mean colour or size across images.
