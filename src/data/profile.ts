@@ -1,7 +1,7 @@
 export const profile = {
   name: "Juthawat",
   role: "Jester · Computer Engineering Student",
-  bio: "just build for myself , and I will improve myself to be good developer.",
+  bio: "just build for myself, i have to fix my issue first so then for community is AFTER",
   location: "Bangkok, Thailand",
   email: "inkfon23@gmail.com",
   email2: "juthawat.jj@gmail.com",
