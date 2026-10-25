@@ -15,6 +15,15 @@ export function Footer() {
           © <Year /> {profile.name}
         </p>
         <p>
+          <a
+            href="https://status-page-xan.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Status
+          </a>
+          {" · "}
           Built with{" "}
           <a
             href="https://nextjs.org"

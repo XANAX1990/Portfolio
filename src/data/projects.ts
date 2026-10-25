@@ -83,6 +83,46 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "status-page",
+    title: "Status Page",
+    tagline: "Public uptime page with automatic incidents and LINE alerts for the apps I run",
+    featured: true,
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB Atlas",
+      "Mongoose",
+      "Zod",
+      "Vitest",
+      "cron-job.org",
+      "LINE Messaging API",
+      "Vercel",
+    ],
+    cover: "/projects/status-page/status.png",
+    links: {
+      live: "https://status-page-xan.vercel.app",
+      repo: "https://github.com/XANAX1990/status-page",
+    },
+    problem:
+      "My n8n runs on my own PC behind ngrok, so it goes down every time I shut the computer off, and nothing told me. I wanted one page showing what is up and how fast it is, plus an alert when something changes.",
+    solution:
+      "An external cron calls a protected Next.js route every 5 minutes. It checks Mini Jira, my portfolio, Pomodoro and n8n in parallel, stores each result in MongoDB, runs a small state machine to open and resolve incidents, and pushes a LINE message when a service goes down or recovers. A server-rendered page shows uptime, latency and incidents.",
+    highlights: [
+      "Down only after 2 failed checks in a row, so one timeout does not page me; alerts fire on state changes only (one on down, one on recovery)",
+      "State machine and stats (uptime %, p95, 90-day daily buckets in Asia/Bangkok days) are pure functions with no I/O, covered by Vitest",
+      "Alerts go straight to the LINE Messaging API, not through n8n, because n8n is one of the things being monitored",
+      "The cron endpoint needs a bearer secret (constant-time compare); the public page and API responses never include monitor URLs",
+      "Status page is a cached Server Component revalidated every 60 seconds; checks expire after 90 days with a MongoDB TTL index",
+    ],
+    lessons: [
+      "Vercel's free plan only runs cron once a day, so an external scheduler (cron-job.org) calls the endpoint every 5 minutes",
+      "With Cache Components on, a route handler is prerendered unless it touches request-time data; calling connection() keeps the cron route dynamic",
+      "Raw fetch error messages can contain the target URL, so errors are reduced to short labels like timeout before they are stored or returned",
+      "Mongoose does not change a TTL index that already exists; extending retention from 30 to 90 days needed collMod on Atlas",
+    ],
+  },
+  {
     slug: "pomodoro",
     title: "Pomodoro",
     tagline: "A webapp that can run offline and push notification and pomodoro timer with ADHD Supports",
