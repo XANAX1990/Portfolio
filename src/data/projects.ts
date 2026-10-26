@@ -125,7 +125,7 @@ export const projects: Project[] = [
   {
     slug: "pomodoro",
     title: "Pomodoro",
-    tagline: "A webapp that can run offline and push notification and pomodoro timer with ADHD Supports",
+    tagline: "Offline-ready Pomodoro PWA with push notifications and ADHD-friendly features.",
     featured: true,
     stack: ["Firebase Hosting", "Service Worker", "HTML", "CSS", "JavaScript"],
     cover: "/projects/pomodoro/timer.png",

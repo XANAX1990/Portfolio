@@ -15,12 +15,6 @@ export function Contact() {
             {profile.email}
           </a>
         </li>
-        <li>
-          Email 2:{" "}
-          <a href={`mailto:${profile.email2}`} className={link}>
-            {profile.email2}
-          </a>
-        </li>
         {isUrl(profile.github) && (
           <li>
             GitHub:{" "}
