@@ -150,4 +150,32 @@ export const projects: Project[] = [
       "After Pause the button that brings the timer back is still labelled Start instead of Resume",
     ],
   },
+  {
+    slug: "mini-jarvis",
+    title: "Jarvis",
+    tagline: "Fully local Thai voice launcher: hold a key, say a phrase, and it opens my apps",
+    featured: true,
+    stack: ["Python 3.12", "faster-whisper", "Piper TTS", "rapidfuzz", "sounddevice", "pytest"],
+    cover: "/projects/mini-jarvis/terminal.png",
+    links: {
+      repo: "https://github.com/XANAX1990/Mini-Jarvis-Local-",
+    },
+    problem:
+      "I was already launching my game and work setups from .bat files. I wanted to just say it, without sending my microphone to anyone's server.",
+    solution:
+      "Hold F9 and speak a Thai command. A local Whisper model turns it into text, fuzzy matching picks one of my presets by name, the preset opens Discord, Chrome tabs and other apps, and a local Piper voice confirms it. Everything runs on my own PC.",
+    highlights: [
+      "Runs entirely on my machine: no cloud, no account, and no audio leaves the PC",
+      "Speech can only select a preset by name from presets.json; it can never build or run another command on the machine",
+      "Fuzzy matching (rapidfuzz) instead of an LLM keeps it light enough for a PC with a GTX 1060 3 GB; Whisper runs on the CPU in int8, with an optional GPU mode that falls back to CPU",
+      "Starts at login from a Startup-folder shortcut (a Windows Service cannot open apps on the desktop), with a single-instance guard",
+      "Preset validation and the matcher are pure functions covered by pytest",
+    ],
+    lessons: [
+      "On silence or noise Whisper recites its initial_prompt (for example \"โหมดทำงาน โหมด\"), which launched a preset by itself; filtering non-speech with VAD fixed it",
+      "rapidfuzz partial_ratio scores any fragment of a phrase as 100, so a very short transcript must not be allowed to match a long phrase",
+      "faster-whisper's own file decoding broke on the newest PyAV, so the app decodes WAV files itself and passes arrays",
+      "With no console window (pythonw) it is easy to start the app twice; a Windows named mutex keeps one listener and output goes to a log file",
+    ],
+  },
 ];
