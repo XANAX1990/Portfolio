@@ -52,6 +52,7 @@ export const projects: Project[] = [
       "Stale auth cookies after rotating AUTH_SECRET cause redirect loops and PKCE errors",
       "Cache Components prerender errors come from non-deterministic values such as crypto",
       "Vercel env var changes need a redeploy; keep separate dev and prod databases",
+      "Moved priority into the create dialog, which cut LINE alerts per new issue from two (created, then priority changed) to one: a UX change and the backend alert rule have to be designed together",
     ],
   },
   {
