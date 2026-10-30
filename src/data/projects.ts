@@ -171,12 +171,14 @@ export const projects: Project[] = [
       "Fuzzy matching (rapidfuzz) instead of an LLM keeps it light enough for a PC with a GTX 1060 3 GB; Whisper runs on the CPU in int8, with an optional GPU mode that falls back to CPU",
       "Starts at login from a Startup-folder shortcut (a Windows Service cannot open apps on the desktop), with a single-instance guard",
       "Preset validation and the matcher are pure functions covered by pytest",
+      "Ask \"how much did I spend this month?\" and it answers from Slip Tracker's local API: read only, loopback only, the token stays in a git-ignored .env, and the amounts are spoken as Thai words",
     ],
     lessons: [
       "On silence or noise Whisper recites its initial_prompt (for example \"โหมดทำงาน โหมด\"), which launched a preset by itself; filtering non-speech with VAD fixed it",
       "rapidfuzz partial_ratio scores any fragment of a phrase as 100, so a very short transcript must not be allowed to match a long phrase",
       "faster-whisper's own file decoding broke on the newest PyAV, so the app decodes WAV files itself and passes arrays",
       "With no console window (pythonw) it is easy to start the app twice; a Windows named mutex keeps one listener and output goes to a log file",
+      "Three questions that differ by one word (วันนี้ / อาทิตย์นี้ / เดือนนี้) scored 90+ against each other, so a bare \"จ่ายไปเท่าไร\" answered for today; the matcher now refuses fragments shared by several presets and near ties",
     ],
   },
   {
