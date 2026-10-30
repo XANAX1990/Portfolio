@@ -159,7 +159,7 @@ export const projects: Project[] = [
     stack: ["Python 3.12", "faster-whisper", "Piper TTS", "rapidfuzz", "sounddevice", "pytest"],
     cover: "/projects/mini-jarvis/terminal.png",
     links: {
-      repo: "https://github.com/XANAX1990/Mini-Jarvis-Local-",
+      repo: "https://github.com/XANAX1990/Mini-Jarvis-Local",
     },
     problem:
       "I was already launching my game and work setups from .bat files. I wanted to just say it, without sending my microphone to anyone's server.",
