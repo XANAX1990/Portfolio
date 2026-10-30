@@ -179,4 +179,42 @@ export const projects: Project[] = [
       "With no console window (pythonw) it is easy to start the app twice; a Windows named mutex keeps one listener and output goes to a log file",
     ],
   },
+  {
+    slug: "slip-tracker",
+    title: "Slip Tracker",
+    tagline: "Local expense tracker that reads Thai bank transfer slips with an on-device OCR model",
+    featured: true,
+    stack: [
+      "Python 3.12",
+      "FastAPI",
+      "SQLite",
+      "Ollama",
+      "Typhoon OCR",
+      "OpenCV",
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "pytest",
+    ],
+    cover: "/projects/slip-tracker/slips.png",
+    links: {},
+    problem:
+      "Most of what I pay for in Thailand is a bank transfer, so my slips are my receipts. They piled up as images with no totals, and I did not want to send them to a cloud OCR service.",
+    solution:
+      "Drop a pile of slip images into a web page on my own PC. A FastAPI service reads the QR code for the transaction reference, runs a local Typhoon OCR model through Ollama on a GTX 1060 3 GB, and plain per-bank parsers (K+, SCB, Krungthai) pull out the amount, date and recipient. Everything lands in SQLite, where I can search, fix what OCR got wrong and see each month by category. It only runs on localhost and is not deployed.",
+    highlights: [
+      "QR for the reference, OCR for the rest: OCR misread the same transaction reference (zero versus letter O, a dropped capital I), while the QR code on the slip carries it exactly, so duplicate detection uses the QR value",
+      "No second LLM: each bank has a fixed layout, so regex parsers fit a single model in 3 GB of VRAM, and adding a bank means adding one file",
+      "Bulk upload runs through one background worker (one GPU) with a status per file; the same image or the same QR reference is rejected as a duplicate in milliseconds, before any OCR",
+      "An eval command scores every field against hand-checked slips: 17 of 17 correct on each field at 31.5 s per slip, on a small set I describe honestly in the README",
+      "Locked down for a localhost app: loopback-only binding, a token between the web app and the API, Host and Origin checks against other pages in my browser, validated values before saving, and stored images re-encoded to strip EXIF",
+    ],
+    lessons: [
+      "The first K+ parser scored 63.6% on the recipient: PromptPay slips have no bank line under the name. Only the eval harness showed it, which is why it exists",
+      "Test images built from nearly equal solid colours encoded to identical JPEG bytes and tripped the image-hash duplicate check, twice; distinct test images now come from random bytes",
+      "A second upload hid the first batch because the page asked for the latest batch only; the API now returns every unfinished batch",
+      "Python on Windows has no time zone database: zoneinfo needs the tzdata package, and the failure only appeared when a request left out the month",
+      "next start listens on all interfaces by default, which would have exposed the API proxy to my LAN; it is pinned to 127.0.0.1",
+    ],
+  },
 ];
