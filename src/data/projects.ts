@@ -154,9 +154,20 @@ export const projects: Project[] = [
   {
     slug: "mini-jarvis",
     title: "Jarvis",
-    tagline: "Fully local Thai voice launcher: hold a key, say a phrase, and it opens my apps",
+    tagline: "Fully local Thai voice launcher: tap a key, say a phrase, and it opens my apps, with a local web page to run and edit it",
     featured: true,
-    stack: ["Python 3.12", "faster-whisper", "Piper TTS", "rapidfuzz", "sounddevice", "pytest"],
+    stack: [
+      "Python 3.12",
+      "faster-whisper",
+      "Piper TTS",
+      "rapidfuzz",
+      "sounddevice",
+      "FastAPI",
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "pytest",
+    ],
     cover: "/projects/mini-jarvis/terminal.png",
     links: {
       repo: "https://github.com/XANAX1990/Mini-Jarvis-Local",
@@ -164,7 +175,7 @@ export const projects: Project[] = [
     problem:
       "I was already launching my game and work setups from .bat files. I wanted to just say it, without sending my microphone to anyone's server.",
     solution:
-      "Hold F9 and speak a Thai command. A local Whisper model turns it into text, fuzzy matching picks one of my presets by name, the preset opens Discord, Chrome tabs and other apps, and a local Piper voice confirms it. Everything runs on my own PC.",
+      "Tap Caps Lock (or click the mic on a page the app serves itself) and speak a Thai command; it stops listening by itself after about a second of silence. A local Whisper model turns it into text, fuzzy matching picks one of my presets by name, the preset opens Discord, Chrome tabs and other apps, and a local Piper voice confirms it. A small web page on 127.0.0.1 shows what it heard and lets me edit presets, read the log, turn a misheard line into a new phrase and change settings without touching JSON. Everything runs on my own PC.",
     highlights: [
       "Runs entirely on my machine: no cloud, no account, and no audio leaves the PC",
       "Speech can only select a preset by name from presets.json; it can never build or run another command on the machine",
@@ -172,6 +183,9 @@ export const projects: Project[] = [
       "Starts at login from a Startup-folder shortcut (a Windows Service cannot open apps on the desktop), with a single-instance guard",
       "Preset validation and the matcher are pure functions covered by pytest",
       "Ask \"how much did I spend this month?\" and it answers from Slip Tracker's local API: read only, loopback only, the token stays in a git-ignored .env, and the amounts are spoken as Thai words",
+      "Tap to talk instead of hold to talk: an energy-based end-of-speech detector (a pure function with its own tests) stops after a second of quiet, gives up after 5 s with no speech and caps a clip at 15 s; the master switch releases the hotkey so Caps Lock types capitals again",
+      "A web UI (a Next.js static export) is served by the same Python process on 127.0.0.1:3003, so there is no Node at runtime and nothing else to start: mic button, on/off switch, a preset editor, a per-day log and settings with a 3-second mic test",
+      "The web API can start programs, so it is locked down: loopback only, a Host allow-list against DNS rebinding, Origin plus a custom header plus JSON on every write, no CORS, and presets saved from the browser are validated (absolute .exe paths that exist, http(s) URLs only, no file: or ms- links) and written atomically with a backup",
     ],
     lessons: [
       "On silence or noise Whisper recites its initial_prompt (for example \"โหมดทำงาน โหมด\"), which launched a preset by itself; filtering non-speech with VAD fixed it",
@@ -179,6 +193,19 @@ export const projects: Project[] = [
       "faster-whisper's own file decoding broke on the newest PyAV, so the app decodes WAV files itself and passes arrays",
       "With no console window (pythonw) it is easy to start the app twice; a Windows named mutex keeps one listener and output goes to a log file",
       "Three questions that differ by one word (วันนี้ / อาทิตย์นี้ / เดือนนี้) scored 90+ against each other, so a bare \"จ่ายไปเท่าไร\" answered for today; the matcher now refuses fragments shared by several presets and near ties",
+      "Tapping again while Jarvis was still speaking made it transcribe its own reply (\"ไม่ได้ยิน\"); the engine now waits for the reply to finish before the microphone opens",
+      "A phrase added from the log could break the commands it was meant to help, because the matcher refuses to guess when a phrase holds another preset's phrase; saves now run the real matcher before and after and refuse any change that would stop a working command",
+      "Next.js prefetches menu links with HEAD requests and a browser may retry a 408, so the API allows HEAD for pages and answers \"no key was pressed\" with a 200",
+    ],
+    gallery: [
+      {
+        src: "/projects/mini-jarvis/web-home.png",
+        alt: "Jarvis web page with a green mic button, the on/off switch, the last command and today's log (sample data)",
+      },
+      {
+        src: "/projects/mini-jarvis/web-presets.png",
+        alt: "Editing a preset in the browser: phrases as tags and an ordered list of steps (sample data)",
+      },
     ],
   },
   {
