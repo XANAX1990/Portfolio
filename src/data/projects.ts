@@ -185,7 +185,7 @@ export const projects: Project[] = [
       "Ask \"how much did I spend this month?\" and it answers from Slip Tracker's local API: read only, loopback only, the token stays in a git-ignored .env, and the amounts are spoken as Thai words",
       "Tap to talk instead of hold to talk: an energy-based end-of-speech detector (a pure function with its own tests) stops after a second of quiet, gives up after 5 s with no speech and caps a clip at 15 s; the master switch releases the hotkey so Caps Lock types capitals again",
       "A web UI (a Next.js static export) is served by the same Python process on 127.0.0.1:3003, so there is no Node at runtime and nothing else to start: mic button, on/off switch, a preset editor, a per-day log and settings with a 3-second mic test",
-      "The web API can start programs, so it is locked down: loopback only, a Host allow-list against DNS rebinding, Origin plus a custom header plus JSON on every write, no CORS, and presets saved from the browser are validated (absolute .exe paths that exist, http(s) URLs only, no file: or ms- links) and written atomically with a backup",
+      "The web API can start programs, so it is locked down: loopback only, Host and Origin checks, and no CORS. Programs run only from an allow-list with fixed arguments, and a preset can only name one. Adding one from the web needs a Yes on a desktop confirmation dialog, so a malicious web page can't launch anything new",
     ],
     lessons: [
       "On silence or noise Whisper recites its initial_prompt (for example \"โหมดทำงาน โหมด\"), which launched a preset by itself; filtering non-speech with VAD fixed it",
